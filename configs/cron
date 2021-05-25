@@ -1,0 +1,10 @@
+/var/log/cron.log {
+	daily 
+	rotate 4
+	compress
+	delaycompress
+	size 1M
+	missingok
+	notifempty
+	create 644 root root
+}
