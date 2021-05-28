@@ -95,10 +95,8 @@ Debian, RedHat: **/var/log/***
 ### Backup e Restore de logs
 - [x] **mysqldump Syslog > backup-banco-syslog.sql**
 - [x] **mysqldump Syslog SystemEvents > backup-tabela-syslog.sql**
-
 - [x] **mysql -u root -D Syslog -e 'DROP TABLE SystemEvents;'**
 - [x] **mysql -u root -D Syslog < backup-tabela-syslog.sql**
-
 - [x] **cp /opt/bkp-banco.sh /usr/local/bin/ && chmod u+x /usr/local/bin/bkp-banco.sh && mkdir /opt/backup"
 - [x] **cp /usr/local/bin/bkp-banco.sh /etc/cron.daily/bkp-banco**
 - [x] **run-parts /etc/cron.daily/** _Força a execução do cron no exato momento_
@@ -114,6 +112,17 @@ Debian, RedHat: **/var/log/***
 - [x] **echo -n leandro | sha256sum**
 - [x] **vim /etc/graylog/server/server.conf**
 
-### Coletando logs dos hosts pelo Rsyslog, Containers
+### Coletando logs dos hosts pelo Rsyslog, Containers, Envio por E-mail, Envio de mensagens pelo Rocket-Chat
 - [x] __Configuração dos hosts apontando para o Syslog via SyslogUDP__
+- [x] **for count in $(seq 1 10); do curl http://192.168.100.61:8081; done**
+- [x] Regex Extractor: **HTTP/1.1\"(.+?)\s.** para extrair os campos com o intuito de criar os Dashboards
+- [x] **Alerta para envio de email pelo Graylog**
+- [x] **Alerta para envio de notificações via RocketChat**
+
+### Centralização de Logs utilizando o Elastic Stack
+- [x] **Instalação do ElasticSearch, Logstash, Filebeat, Metricbeat**
+
+### Gerenciar Logs na AWS com o CloudWatch, GCP com o StackDriver
+- [x] ** yum install awslogs -y**
+- [x] **docker container run -d --name nginx --log-driver=awslogs --log-opt awslogs-region=us-east-1 --log-opt awslogs-group=nginx-logs --log-opt awslogs-create-group=true -p 80:80 nginx**
 
